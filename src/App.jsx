@@ -58,6 +58,7 @@ function App() {
         setHistorico([{ link, resultado: result.summary }, ...historico]);
       } else {
         if (response.status === 422) setErro("Unprocessable Content");
+        else if (response.status == 429) setErro("Too Many Requests");
         else setErro(response.statusText);
         setResultado("");
       }
@@ -102,7 +103,7 @@ function App() {
 
           {loading && <Loading />}
           {resultado && !loading && <Resultados resultado={resultado} />}
-          {erro && !loading && !resultado && <Error error={erro} />}
+          {erro && !resultado && !loading && <Error error={erro} />}
         </div>
       </div>
     </>
