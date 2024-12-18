@@ -59,7 +59,7 @@ function App() {
       } else {
         if (response.status === 422) setErro("Unprocessable Content");
         else if (response.status == 429) setErro("Too Many Requests");
-        else setErro(response.statusText);
+        else setErro("Erro: ", response.statusText);
         setResultado("");
       }
     } catch (error) {
